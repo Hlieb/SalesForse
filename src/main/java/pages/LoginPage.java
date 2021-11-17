@@ -8,17 +8,14 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public static final String LOGIN = "hlieb-unsw@force.com";
-    public static final String PASSWORD = "Gq2KPsXekAb*ySd%";
-
     public LoginPage openLoginPage() {
-        openStartPage(BASE_URL);
+        openUrl(BASE_URL);
         return this;
     }
 
-    public HomePage login() {
-        driver.findElement(By.id("username")).sendKeys(LOGIN);
-        driver.findElement(By.id("password")).sendKeys(PASSWORD);
+    public HomePage login(String login, String password) {
+        driver.findElement(By.id("username")).sendKeys(login);
+        driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("Login")).click();
         return new HomePage(driver);
     }

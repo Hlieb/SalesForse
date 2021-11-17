@@ -11,7 +11,7 @@ public class BasePage {
 
     public static final String BASE_URL = "https://tms2.my.salesforce.com/";
 
-    public void openStartPage(String URL) {
+    public void openUrl(String URL) {
         driver.get(URL);
     }
 }

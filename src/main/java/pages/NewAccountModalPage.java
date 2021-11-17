@@ -1,10 +1,11 @@
 package pages;
 
+import elements.DropDown;
 import elements.InputField;
 import elements.TextField;
+import objects.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class NewAccountModalPage extends BasePage {
 
@@ -20,16 +21,13 @@ public class NewAccountModalPage extends BasePage {
         return this;
     }
 
-    public NewAccountModalPage fillInputField(String accountName, String webSite) {
-        new InputField(driver, "Account Name").writeInputData(accountName);
-        new InputField(driver, "Website").writeInputData(webSite);
-        return this;
-    }
-
-    public NewAccountModalPage fillTextField(String description, String billingStreet) {
-        new TextField(driver, "Description").writeTextData(description);
-        new TextField(driver, "Billing Street").writeTextData(billingStreet);
-        return this;
+    public void create(Account account) {
+        new InputField(driver, "Account Name").writeInputData(account.getAccountName());
+        new InputField(driver, "Website").writeInputData(account.getWebSite());
+        new TextField(driver, "Description").writeTextData(account.getDescription());
+        new TextField(driver, "Billing Street").writeTextData(account.getBillingAddress());
+        new DropDown(driver, "Industry").selectOption(account.getIndustryType());
+      //  clickSave();
     }
 
     public NewAccountModalPage clickSave() {
